@@ -10,29 +10,56 @@
     "private": "true",
     "scripts": {
         "phonegap": "npm run build:setup && phonegap --verbose",
-        "release-phonegap-wp8": "bash ./resources/script/phonegap-wp8.sh",
         "build:less": "lessc -x resources/less/app.less > www/css/app.css",
         "build:clean": "node ./resources/script/clean.js",
-        "build:config-wp8": "node ./resources/script/config-wp8.js",
         "build:config:restore": "node ./resources/script/restore-config.js",
         "build:setup": "npm run build:clean && npm run build:setup:directories",
         "build:setup:adhoc": "npm run build:setup && node ./resources/script/setup-ad-hoc.js",
         "build:setup:directories": "node ./resources/script/setup-directories.js",
         "release-android": "bash ./resources/script/release-android.sh",
         "release-ios": "bash ./resources/script/release-ios.sh",
-        "release-wp8": "npm run release-phonegap-wp8 && phonegap compile wp8 --release --verbose",
         "adhoc-android": "bash ./resources/script/adhoc-android.sh",
         "adhoc-ios": "bash ./resources/script/adhoc-ios.sh",
-        "adhoc-wp8": "bash ./resources/script/adhoc-wp8.sh",
-        "test": "jasmine-node tests/browser",
-        "test-wp8": "npm run build:setup && phonegap --verbose build wp8 --test"
+        "test": "jasmine-node tests/browser"
     },
     "dependencies": {
+        "cordova-android": "7.1.4",
+        "cordova-android-play-services-gradle-release": "2.1.0",
+        "cordova-android-support-gradle-release": "2.1.0",
+        "cordova-ios": "~4.4.0",
         "cordova-plugin-advanced-http": "^2.0.6",
         "cordova-plugin-badge": "^0.8.8",
+        "cordova-plugin-battery-status": "^1.2.5",
+        "cordova-plugin-ble-central": "^1.2.2",
+        "cordova-plugin-camera": "^2.4.1",
+        "cordova-plugin-compat": "^1.2.0",
+        "cordova-plugin-console": "^1.1.0",
         "cordova-plugin-contacts": "^2.3.1",
+        "cordova-plugin-device": "^1.1.7",
+        "cordova-plugin-device-motion": "^1.2.5",
+        "cordova-plugin-device-orientation": "^1.0.7",
+        "cordova-plugin-dialogs": "^1.3.4",
+        "cordova-plugin-file": "^4.3.3",
+        "cordova-plugin-geolocation": "^2.4.3",
+        "cordova-plugin-globalization": "^1.11.0",
+        "cordova-plugin-inappbrowser": "^1.7.2",
+        "cordova-plugin-insomnia": "^4.3.0",
         "cordova-plugin-local-notification": "^0.9.0-beta.2",
-        "cordova-plugin-wkwebview-engine": "^1.1.4"
+        "cordova-plugin-media": "^3.0.1",
+        "cordova-plugin-media-capture": "^1.4.3",
+        "cordova-plugin-network-information": "^1.3.4",
+        "cordova-plugin-screen-orientation": "^2.0.2",
+        "cordova-plugin-splashscreen": "^4.1.0",
+        "cordova-plugin-statusbar": "^2.4.2",
+        "cordova-plugin-vibration": "^2.1.6",
+        "cordova-plugin-whitelist": "^1.3.3",
+        "cordova-plugin-wkwebview-engine": "^1.1.4",
+        "cordova-plugin-x-socialsharing": "git+https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git",
+        "es6-promise-plugin": "^4.2.2",
+        "phonegap-plugin-barcodescanner": "^8.0.1",
+        "phonegap-plugin-contentsync": "^1.4.2",
+        "phonegap-plugin-mobile-accessibility": "^1.0.5",
+        "phonegap-plugin-push": "^1.11.1"
     },
     "devDependencies": {
         "app-root-path": "1.0.0",
@@ -52,7 +79,60 @@
             "cordova-plugin-advanced-http": {},
             "cordova-plugin-contacts": {
                 "CONTACTS_USAGE_DESCRIPTION": "Contacts used for development purposes"
+            },
+            "cordova-plugin-battery-status": {},
+            "cordova-plugin-camera": {
+                "CAMERA_USAGE_DESCRIPTION": "Camera used for development purposes"
+            },
+            "cordova-plugin-console": {},
+            "cordova-plugin-device": {},
+            "cordova-plugin-device-motion": {},
+            "cordova-plugin-device-orientation": {},
+            "cordova-plugin-dialogs": {},
+            "cordova-plugin-file": {},
+            "cordova-plugin-geolocation": {
+                "GEOLOCATION_USAGE_DESCRIPTION": "Geolocation used for development purposes"
+            },
+            "cordova-plugin-globalization": {},
+            "cordova-plugin-inappbrowser": {},
+            "cordova-plugin-media": {},
+            "cordova-plugin-media-capture": {
+                "CAMERA_USAGE_DESCRIPTION": "Camera used for development purposes",
+                "MICROPHONE_USAGE_DESCRIPTION": "Microphone used for development purposes",
+                "PHOTOLIBRARY_USAGE_DESCRIPTION": "Photo library used for development purposes"
+            },
+            "cordova-plugin-network-information": {},
+            "cordova-plugin-splashscreen": {},
+            "cordova-plugin-statusbar": {},
+            "cordova-plugin-vibration": {},
+            "phonegap-plugin-contentsync": {},
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-insomnia": {},
+            "cordova-plugin-ble-central": {
+                "BLUETOOTH_USAGE_DESCRIPTION": "Bluetooth development purposes"
+            },
+            "phonegap-plugin-push": {
+                "SENDER_ID": "85075801930"
+            },
+            "cordova-plugin-x-socialsharing": {
+                "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
+            },
+            "phonegap-plugin-barcodescanner": {
+                "CAMERA_USAGE_DESCRIPTION": "Camera used for development purposes",
+                "ANDROID_SUPPORT_V4_VERSION": "27.+"
+            },
+            "phonegap-plugin-mobile-accessibility": {},
+            "cordova-plugin-screen-orientation": {},
+            "cordova-android-support-gradle-release": {
+                "ANDROID_SUPPORT_VERSION": "27.+"
+            },
+            "cordova-android-play-services-gradle-release": {
+                "PLAY_SERVICES_VERSION": "15.+"
             }
-        }
+        },
+        "platforms": [
+            "android",
+            "ios"
+        ]
     }
 }
